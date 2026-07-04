@@ -1,11 +1,11 @@
 pipeline {
     agent any
 
-    environment {
-        MONGO_URI = 'mongodb+srv://saranyasmiles55_db_user:kG2GKIaveMNbW0fb@clustersaro.gdsocya.mongodb.net/studentsdb?retryWrites=true&w=majority'
+       environment {
+        MONGO_URI = 'mongodb+srv://saranyasmiles55_db_user:kG2GKIaveMNbW0fb@clustersaro.gdsocya.mongodb.net/studentsdb?retryWrites=true&w=majority&appName=ClusterSaro'
         SECRET_KEY = 'mysecretkey'
     }
-
+    
     stages {
         stage('Build') {
             steps {
