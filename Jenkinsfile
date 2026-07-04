@@ -5,23 +5,22 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Installing dependencies...'
-                sh 'python3 -m venv venv'
-                sh '. venv/bin/activate && pip install -r requirements.txt'
+                bat 'python -m venv venv'
+                bat 'venv\\Scripts\\pip install -r requirements.txt'
             }
         }
 
         stage('Test') {
             steps {
                 echo 'Running unit tests...'
-                sh '. venv/bin/activate && pytest'
+                bat 'venv\\Scripts\\python -m pytest'
             }
         }
 
         stage('Deploy') {
             steps {
                 echo 'Deploying to staging...'
-                sh 'pkill -f app.py || true'
-                sh '. venv/bin/activate && nohup python app.py > flask.log 2>&1 &'
+                bat 'start /B venv\\Scripts\\python app.py'
             }
         }
     }
