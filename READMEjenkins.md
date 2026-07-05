@@ -261,39 +261,7 @@ git push origin main
 
 ---
 
-## Step 8: Configure GitHub Webhook
-
-Open GitHub repository:
-
-text
-Settings → Webhooks → Add webhook
-
-
-Configure:
-
-text
-Payload URL:
-http://<JENKINS_PUBLIC_IP>:8080/github-webhook/
-
-Content Type:
-application/json
-
-Events:
-Just the push event
-
-
-Click:
-
-text
-Add webhook
-
-
-Note:
-For local Jenkins installation, webhook functionality requires public access or tunneling.
-
----
-
-## Step 9: Execute Jenkins Pipeline
+## Step 8: Execute Jenkins Pipeline
 
 Open Jenkins job:
 
