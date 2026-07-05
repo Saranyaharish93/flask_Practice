@@ -17,12 +17,6 @@ jobs:
   build-test:
     runs-on: ubuntu-latest
 
-    services:
-      mongodb:
-        image: mongo:6
-        ports:
-          - 27017:27017
-
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -40,8 +34,8 @@ jobs:
 
       - name: Run Tests
         env:
-          MONGO_URI: mongodb://localhost:27017/test_student_db
-          SECRET_KEY: test-secret
+          MONGO_URI: ${{ secrets.MONGO_URI }}
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
         run: |
           pytest -v
 
@@ -63,7 +57,7 @@ jobs:
           DEPLOY_KEY: ${{ secrets.STAGING_DEPLOY_KEY }}
         run: |
           echo "Deploying Flask app to staging environment"
-          echo "Using staging deploy key securely from GitHub Secrets"
+          echo "Using staging deploy key securely"
           echo "Staging deployment completed successfully"
 
   deploy-production:
@@ -80,5 +74,5 @@ jobs:
           DEPLOY_KEY: ${{ secrets.PRODUCTION_DEPLOY_KEY }}
         run: |
           echo "Deploying Flask app to production environment"
-          echo "Using production deploy key securely from GitHub Secrets"
+          echo "Using production deploy key securely"
           echo "Production deployment completed successfully"
