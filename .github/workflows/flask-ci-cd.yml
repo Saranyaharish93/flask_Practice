@@ -17,6 +17,12 @@ jobs:
   build-test:
     runs-on: ubuntu-latest
 
+     services:
+      mongodb:
+        image: mongo:6
+        ports:
+          - 27017:27017
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
