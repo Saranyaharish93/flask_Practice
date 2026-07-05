@@ -17,7 +17,7 @@ jobs:
   build-test:
     runs-on: ubuntu-latest
 
-     services:
+    services:
       mongodb:
         image: mongo:6
         ports:
