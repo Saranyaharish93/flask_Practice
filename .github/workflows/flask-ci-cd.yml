@@ -75,4 +75,4 @@ jobs:
         run: |
           echo "Deploying Flask app to production environment"
           echo "Using production deploy key securely"
-          echo "Production deployment completed successfully"
+          echo "Production deployment completed successfully "
